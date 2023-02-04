@@ -17,6 +17,7 @@ public class ToDo_Controller {
     @Autowired
     private Todo_Repository todoItemRepository;
    
+    // adds two Task from the datalodder
     @GetMapping("/")
     public ModelAndView index(){
          ModelAndView modelAndView = new ModelAndView("index.html");

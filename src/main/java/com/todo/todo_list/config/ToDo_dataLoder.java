@@ -10,7 +10,8 @@ import com.todo.todo_list.Repository.Todo_Repository;
 
 
 
-
+/*Here we are adding two tasks to the database as soon as the application starts to run
+using the command line runner*/
 @Component
 public class ToDo_dataLoder implements CommandLineRunner {
     
@@ -19,11 +20,13 @@ public class ToDo_dataLoder implements CommandLineRunner {
     @Autowired
     Todo_Repository todo_reop;
 
+    // over riding the run method from command line runner
     @Override
     public void run(String... args)  throws Exception{
         loading();
     }
 
+    // Both the Task, if todorepo is empty
     private void loading() {
         if(todo_reop.count()==0){
             ToDo_Items item1 = new ToDo_Items("Compelte task 1");
@@ -33,6 +36,7 @@ public class ToDo_dataLoder implements CommandLineRunner {
 
             
         }
+        //logs the info in console for testing purpose
         logger.info("Number {}", todo_reop.count());
 
 
