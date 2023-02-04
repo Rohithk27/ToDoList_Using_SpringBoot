@@ -26,6 +26,7 @@ public class ToDo_Controller {
 
     }
     
+    //deletes Tasks
      @GetMapping("/delete")
     public String showUpdateForm(@RequestParam Integer Id,Model model){
         ToDo_Items todoitems =todoItemRepository.findById(Id).orElseThrow(()-> new IllegalArgumentException("No such element in to do list") );
@@ -33,12 +34,15 @@ public class ToDo_Controller {
         return "redirect:/";
     }
 
+    // Adds Tasks
     @GetMapping("/add")
     public String addItems(Model model){
         model.addAttribute("added", new ToDo_Items());
         return "update-todo-items.html";
 
     }
+
+    // saves tasks to H2
     @PostMapping("/handleSubmit")
     public String dataFromForm(ToDo_Items todo){
         todoItemRepository.save(todo);
